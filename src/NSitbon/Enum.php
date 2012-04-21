@@ -29,7 +29,7 @@
  *
  */
 
-namespace nsitbon;
+namespace NSitbon;
 
 abstract class Enum
 {
