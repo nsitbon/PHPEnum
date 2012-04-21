@@ -1,14 +1,7 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: nsitbon
- * Date: 20/04/12
- * Time: 18:37
- */
 require_once('../src/enum.php');
 
 use \nsitbon\Enum;
-use \nsitbon\BadEnumValueException;
 
 class Color extends Enum
 {
@@ -32,6 +25,15 @@ class Test
         self::compareColor($color2, $color3);
         self::compareColor($color1, $color3);
         self::compareColor($color1, $color1);
+
+        try
+        {
+            $invalidColor = Color::BLACK();
+        }
+        catch(\BadFunctionCallException $e)
+        {
+            echo 'error : ' . $e->getMessage() . "\n";
+        }
     }
 
     private static function compareColor(Color $color1, Color $color2)
