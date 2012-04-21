@@ -1,7 +1,12 @@
 <?php
-require_once('../src/enum.php');
+function autoload($className)
+{
+    require_once('..\\src\\' . $className . '.php');
+}
 
-use \nsitbon\Enum;
+spl_autoload_register('autoload', true);
+
+use \NSitbon\Enum;
 
 class Color extends Enum
 {
@@ -25,6 +30,17 @@ class Test
         self::compareColor($color2, $color3);
         self::compareColor($color1, $color3);
         self::compareColor($color1, $color1);
+
+        switch ($color1)
+        {
+            case Color::RED(): echo 'red' . "\n"; break;
+            case Color::ORANGE(): echo 'orange' . "\n"; break;
+            case Color::YELLOW(): echo 'yellow' . "\n"; break;
+            case Color::GREEN(): echo 'green' . "\n"; break;
+            case Color::BLUE(): echo 'blue' . "\n"; break;
+            case Color::INDIGO(): echo 'indigo' . "\n"; break;
+            case Color::VIOLET(): echo 'violet' . "\n"; break;
+        }
 
         try
         {
