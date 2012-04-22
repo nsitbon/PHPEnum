@@ -73,4 +73,6 @@ abstract class Enum
             self::$instances[$key] = new static($value);
         }
     }
+
+    private function __clone(){}
 }
